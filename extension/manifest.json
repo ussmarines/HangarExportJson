@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "HangarExportJson",
+  "version": "0.2.0",
+  "description": "Export RSI hangar vehicle candidates locally, with explicit uncertainty reporting.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://robertsspaceindustries.com/account/pledges",
+        "https://robertsspaceindustries.com/account/pledges?*",
+        "https://robertsspaceindustries.com/en/account/pledges",
+        "https://robertsspaceindustries.com/en/account/pledges?*"
+      ],
+      "js": [
+        "core.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "hangarexportjson@ussmarines",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  }
+}
