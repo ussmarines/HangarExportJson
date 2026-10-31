@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.3 — 2026-10-31
+
+- Add the MIT License with copyright credit to ussmarines and explicit free distribution terms in both README languages.
+- Add prominent optional PayPal donation links and GitHub funding configuration.
+- Package the license with the new tagged prerelease; runtime export behavior and JSON format 2 remain unchanged.
+
 ## 0.2.2 — 2026-10-31
 
 - Add a native format-2 Juliet consumer contract and a shared synthetic fixture covering multiplicity, custom names, ground vehicles, inclusion provenance and incomplete-result diagnostics.

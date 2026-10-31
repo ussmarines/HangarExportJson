@@ -8,7 +8,7 @@ The [Juliet consumer contract](JULIET_CONTRACT.md) describes a native format-2 a
 | ---------------- | --------------------------------------------------------------------------------------------- |
 | `format`         | Exactly `HangarExportJson`.                                                                   |
 | `version`        | Integer `2`. Consumers must reject unsupported versions.                                      |
-| `complete`       | Always `false` in 0.2.2. Finishing pagination does not establish a fully qualified inventory. |
+| `complete`       | Always `false` in 0.2.3. Finishing pagination does not establish a fully qualified inventory. |
 | `inclusionRules` | Local rule revision, public source URL and quantity policy. No runtime catalogue fetch.       |
 | `fleet`          | Groups of directly observed vehicle candidates and supported included craft.                  |
 | `unresolved`     | Entries or items that cannot safely be interpreted.                                           |

@@ -1,6 +1,6 @@
 # HangarExportJson
 
-**[Télécharger l’extension](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.2) · [Soutenir le projet sur PayPal](https://www.paypal.com/paypalme/ussmarinesdot) · [English](README.md)**
+**[Télécharger l’extension](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.3) · [Soutenir le projet sur PayPal](https://www.paypal.com/paypalme/ussmarinesdot) · [English](README.md)**
 
 Extension légère, sans dépendance, pour exporter localement les véhicules candidats du hangar RSI en JSON. Cibles : Firefox, Chrome et Opera.
 
@@ -10,7 +10,7 @@ Extension légère, sans dépendance, pour exporter localement les véhicules ca
 
 ## Installation simple
 
-[Téléchargez HangarExportJson 0.2.2](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.2/HangarExportJson-0.2.2.zip), puis décompressez le fichier. La [page de téléchargement](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.2) fournit aussi une empreinte SHA-256. Aucun outil de compilation ni installation npm n’est nécessaire. Dans le dossier extrait `HangarExportJson-0.2.2`, sélectionnez le sous-dossier **extension**.
+[Téléchargez HangarExportJson 0.2.3](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.3/HangarExportJson-0.2.3.zip), puis décompressez le fichier. La [page de téléchargement](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.3) fournit aussi une empreinte SHA-256. Aucun outil de compilation ni installation npm n’est nécessaire. Dans le dossier extrait `HangarExportJson-0.2.3`, sélectionnez le sous-dossier **extension**.
 
 Cette préversion expérimentale est destinée à une installation manuelle ; ce n’est pas un module signé distribué sur une boutique. Le téléchargement du code courant via **Code → Download ZIP** reste possible.
 
@@ -59,13 +59,19 @@ Les véhicules terrestres sont inclus lorsqu’un élément de véhicule est typ
 
 ## Véhicules inclus, sans remplaçants temporaires
 
-La version **0.2.2**, au format JSON **2**, utilise une table locale sourcée pour les quatre véhicules secondaires confirmés par RSI : **85X** avec le 890 Jump, **Skylark** avec le Constellation Mk V Centaurus, **C8X Pisces Expedition et Ursa** avec la variante Carrack Expedition équipée du C8X. Seuls les modèles actuels et constructeurs correspondant exactement aux règles déclenchent cet ajout. Aucun catalogue n’est téléchargé. [Règles et sources officielles](docs/INCLUDED_VEHICLES.md).
+La version **0.2.3**, au format JSON **2**, utilise une table locale sourcée pour les quatre véhicules secondaires confirmés par RSI : **85X** avec le 890 Jump, **Skylark** avec le Constellation Mk V Centaurus, **C8X Pisces Expedition et Ursa** avec la variante Carrack Expedition équipée du C8X. Seuls les modèles actuels et constructeurs correspondant exactement aux règles déclenchent cet ajout. Aucun catalogue n’est téléchargé. [Règles et sources officielles](docs/INCLUDED_VEHICLES.md).
 
 Chaque exemplaire indique `source: "pledge"` ou `source: "included"`. Les inclusions gardent leurs parents dans `includedWith`, sans hériter de leur nom personnalisé. Selon la règle RSI actuelle, plusieurs parents ne multiplient pas un même véhicule secondaire. Les exemplaires achetés séparément restent distincts. En cas de recouvrement ambigu dans un même pack, l’extension signale `INCLUSION_OVERLAP` et n’ajoute pas d’exemplaire hypothétique. Les loaners de remplacement et d’Arena Commander ne sont pas ajoutés. La table reste limitée à ces parents, ce que le fichier signale explicitement.
 
 ## Soutenir le projet
 
 Si HangarExportJson vous est utile, vous pouvez [faire un don facultatif sur PayPal](https://www.paypal.com/paypalme/ussmarinesdot) pour soutenir son développement et sa maintenance. Aucun don n’est nécessaire pour télécharger ou utiliser l’extension.
+
+## Licence et crédit
+
+Extension créée et maintenue par **[ussmarines](https://github.com/ussmarines)**, distribuée gratuitement sous [licence MIT](LICENSE). L’utilisation, la modification et la redistribution, y compris commerciale, sont autorisées à condition de conserver la mention de copyright et le texte de la licence dans les copies ou parties substantielles. Les dons sont entièrement facultatifs.
+
+Projet communautaire indépendant, sans affiliation avec Cloud Imperium Games. La licence du projet ne confère aucun droit sur les marques RSI ou les contenus tiers du jeu.
 
 ## Désinstallation et développement
 

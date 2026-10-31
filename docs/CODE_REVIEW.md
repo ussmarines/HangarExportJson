@@ -4,6 +4,8 @@ Reviewed on 2026-10-31. This is a focused source review and synthetic validation
 
 The 0.2.2 package retains this reviewed runtime unchanged. Its additions are the interoperability contract, shared fixture, contract checks and release documentation; the manifest/package version changes only the distribution identifier. JSON format remains 2.
 
+Version 0.2.3 adds MIT licensing, author credit and optional donation links to the distribution. Its runtime remains identical; no payment interface, donation request or tracking is added to the extension itself.
+
 ## Useful work and lifecycle
 
 `core.js` contains the shared data logic. `parse` reads one inert hangar document; `collect` coordinates bounded pages and calls `result`; `result` groups direct items and applies the small inclusion table. All three exports are used by the extension or its verification tools. Internal helpers are used; no unused production function or dependency was identified. `content.js` adds the controls once and connects the explicit click/cancel handlers to this logic. No background process is registered.
