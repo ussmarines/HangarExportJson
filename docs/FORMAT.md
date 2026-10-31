@@ -2,6 +2,8 @@
 
 The format is independent of Juliet and every other importer. No compatibility with Juliet has been tested.
 
+The [Juliet consumer contract](JULIET_CONTRACT.md) describes a native format-2 adapter and provides a shared synthetic fixture. The existing Juliet legacy-array parser does not support this object yet; this is an implementation contract, not an integration-success claim.
+
 | Field            | Meaning                                                                                       |
 | ---------------- | --------------------------------------------------------------------------------------------- |
 | `format`         | Exactly `HangarExportJson`.                                                                   |

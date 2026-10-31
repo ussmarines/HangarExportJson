@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Add a native format-2 Juliet consumer contract and a shared synthetic fixture covering multiplicity, custom names, ground vehicles, inclusion provenance and incomplete-result diagnostics.
+- Add producer contract tests without changing the extension runtime, JSON format or existing release assets. Consumer integration remains pending in Juliet.
+
 ## 0.2.1 — 2026-10-31
 
 - Replace repeated fleet-group searches with collision-safe Map lookups.

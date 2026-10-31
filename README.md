@@ -63,6 +63,8 @@ Each instance identifies `source: "pledge"` or `source: "included"`. Included in
 
 ## Development
 
+For Juliet integration, use the [native format-2 consumer contract](docs/JULIET_CONTRACT.md) and its [synthetic fixture](contracts/juliet-v2.synthetic.json). A consumer adapter must preserve incomplete-result diagnostics and require acknowledgment before import. The legacy Juliet parser does not accept this object yet; no lossy legacy-array export mode has been added.
+
 Requires Node.js 22+ for tests only; the installed extension has no dependencies. Playwright is a development-only dependency for actual browser checks.
 
 ```sh

@@ -1,0 +1,97 @@
+{
+  "format": "HangarExportJson",
+  "version": 2,
+  "complete": false,
+  "inclusionRules": {
+    "revision": "2026-10-31",
+    "quantityPolicy": "one-included-instance-per-model",
+    "source": "https://support.robertsspaceindustries.com/hc/en-us/articles/4408770370455-Included-Vessels-Snub-Fighters-and-Rovers"
+  },
+  "fleet": [
+    {
+      "model": "890 JUMP",
+      "manufacturer": "Origin Jumpworks (ORIG)",
+      "category": "ship",
+      "quantity": 2,
+      "instances": [
+        {
+          "customName": "Synthetic North",
+          "source": "pledge",
+          "includedWith": null
+        },
+        {
+          "customName": "Synthetic South",
+          "source": "pledge",
+          "includedWith": null
+        }
+      ]
+    },
+    {
+      "model": "PTV",
+      "manufacturer": "Greycat Industrial (GRIN)",
+      "category": "vehicle",
+      "quantity": 1,
+      "instances": [
+        {
+          "customName": null,
+          "source": "pledge",
+          "includedWith": null
+        }
+      ]
+    },
+    {
+      "model": "F8C Lightning Executive Edition",
+      "manufacturer": "Anvil Aerospace (ANVL)",
+      "category": "ship",
+      "quantity": 1,
+      "instances": [
+        {
+          "customName": null,
+          "source": "pledge",
+          "includedWith": null
+        }
+      ]
+    },
+    {
+      "model": "85X",
+      "manufacturer": "Origin Jumpworks (ORIG)",
+      "category": "ship",
+      "quantity": 1,
+      "instances": [
+        {
+          "customName": null,
+          "source": "included",
+          "includedWith": [
+            {
+              "model": "890 JUMP",
+              "customName": "Synthetic North"
+            },
+            {
+              "model": "890 JUMP",
+              "customName": "Synthetic South"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "page": 1,
+      "entry": 2,
+      "reason": "ANCILLARY_CONTENT_UNVERIFIED"
+    }
+  ],
+  "errors": [
+    {
+      "page": 2,
+      "code": "HTTP_ERROR"
+    }
+  ],
+  "warnings": [
+    "COMPLETENESS_NOT_QUALIFIED",
+    "UNTYPED_CONTENT_NOT_INFERRED",
+    "INCLUDED_VESSEL_RULES_PARTIAL",
+    "TEMPORARY_LOANERS_NOT_INCLUDED"
+  ]
+}

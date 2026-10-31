@@ -63,6 +63,8 @@ Chaque exemplaire indique `source: "pledge"` ou `source: "included"`. Les inclus
 
 ## Désinstallation et développement
 
+Un [contrat d’import natif pour Juliet](docs/JULIET_CONTRACT.md) et une [fixture entièrement synthétique](contracts/juliet-v2.synthetic.json) sont disponibles. L’adaptateur côté Juliet doit conserver les avertissements et demander une confirmation avant l’import partiel. Son ancien parseur de tableaux n’accepte pas encore cet objet ; aucun export de tableau supprimant les réserves n’a été ajouté ici.
+
 La [revue de code 0.2.1](docs/CODE_REVIEW.md) documente les limites des boucles et le nettoyage des délais et écouteurs. Aucun travail de collecte n’est planifié au repos. Le regroupement et la détection des recouvrements utilisent des index en mémoire pour éviter les recherches répétées dans tout le hangar.
 
 Supprimez HangarExportJson depuis le gestionnaire d’extensions. Les JSON déjà téléchargés doivent être supprimés séparément. Aucun stockage persistant n’est utilisé.

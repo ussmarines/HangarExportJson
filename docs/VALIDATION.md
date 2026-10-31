@@ -35,6 +35,8 @@ A private offline comparison using only model/manufacturer projections from user
 
 ## Reproduce
 
+Two additional producer contract tests verify the shared [Juliet fixture](../contracts/juliet-v2.synthetic.json) against real `result()` output and check five expanded instances, distinct callsigns, a terrestrial vehicle, shared inclusion provenance and retained diagnostics. They can be run independently with `node --test tests/contract.test.cjs`. The existing 21 unchanged Node checks and Chromium evidence remain applicable: no production or browser-test code changed for this contract. No Juliet consumer integration test has passed or been claimed here; the inspected legacy parser rejects the canonical object until its native adapter is implemented.
+
 The [0.2.1 source review](CODE_REVIEW.md) describes the removal of repeated full scans and a redundant link fallback. The affected browser suite additionally exercises a genuinely stalled synthetic response until the production 15-second request timeout, then verifies the controls recover. No real account is used for this check.
 
 Installation needs no development tools. To run checks from the repository root:
