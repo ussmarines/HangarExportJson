@@ -55,11 +55,13 @@ Les véhicules terrestres sont inclus lorsqu’un élément de véhicule est typ
 
 ## Véhicules inclus, sans remplaçants temporaires
 
-La version **0.2.0**, au format JSON **2**, ajoute une table locale sourcée pour les quatre véhicules secondaires confirmés par RSI : **85X** avec le 890 Jump, **Skylark** avec le Constellation Mk V Centaurus, **C8X Pisces Expedition et Ursa** avec la variante Carrack Expedition équipée du C8X. Seuls les modèles actuels et constructeurs correspondant exactement aux règles déclenchent cet ajout. Aucun catalogue n’est téléchargé. [Règles et sources officielles](docs/INCLUDED_VEHICLES.md).
+La version **0.2.1**, au format JSON **2**, utilise une table locale sourcée pour les quatre véhicules secondaires confirmés par RSI : **85X** avec le 890 Jump, **Skylark** avec le Constellation Mk V Centaurus, **C8X Pisces Expedition et Ursa** avec la variante Carrack Expedition équipée du C8X. Seuls les modèles actuels et constructeurs correspondant exactement aux règles déclenchent cet ajout. Aucun catalogue n’est téléchargé. [Règles et sources officielles](docs/INCLUDED_VEHICLES.md).
 
 Chaque exemplaire indique `source: "pledge"` ou `source: "included"`. Les inclusions gardent leurs parents dans `includedWith`, sans hériter de leur nom personnalisé. Selon la règle RSI actuelle, plusieurs parents ne multiplient pas un même véhicule secondaire. Les exemplaires achetés séparément restent distincts. En cas de recouvrement ambigu dans un même pack, l’extension signale `INCLUSION_OVERLAP` et n’ajoute pas d’exemplaire hypothétique. Les loaners de remplacement et d’Arena Commander ne sont pas ajoutés. La table reste limitée à ces parents, ce que le fichier signale explicitement.
 
 ## Désinstallation et développement
+
+La [revue de code 0.2.1](docs/CODE_REVIEW.md) documente les limites des boucles et le nettoyage des délais et écouteurs. Aucun travail de collecte n’est planifié au repos. Le regroupement et la détection des recouvrements utilisent des index en mémoire pour éviter les recherches répétées dans tout le hangar.
 
 Supprimez HangarExportJson depuis le gestionnaire d’extensions. Les JSON déjà téléchargés doivent être supprimés séparément. Aucun stockage persistant n’est utilisé.
 

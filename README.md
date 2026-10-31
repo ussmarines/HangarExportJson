@@ -4,7 +4,7 @@ Export RSI hangar vehicle candidates to a local JSON file. A small Manifest V3 e
 
 **Status: experimental, with explicit incomplete-result reporting.** Current RSI markup was inspected on an authorized real hangar, and the installed extension passed synthetic Chromium browser checks. A real-account extension export and actual Firefox/Opera runs remain unverified. Every export is marked `complete: false`; do not treat it as an authoritative inventory.
 
-[French README](README.fr.md) · [JSON format](docs/FORMAT.md) · [Included vehicles](docs/INCLUDED_VEHICLES.md) · [Security and privacy](docs/SECURITY.md) · [Validation and remaining work](docs/VALIDATION.md)
+[French README](README.fr.md) · [JSON format](docs/FORMAT.md) · [Included vehicles](docs/INCLUDED_VEHICLES.md) · [Security and privacy](docs/SECURITY.md) · [Code review](docs/CODE_REVIEW.md) · [Validation and remaining work](docs/VALIDATION.md)
 
 ## Quick installation
 
@@ -55,7 +55,7 @@ Direct ship and ground-vehicle candidates require supported item labels. Variant
 
 ## Included vehicles, without temporary loaners
 
-Version 0.2.0 exports JSON format **2** and adds four officially documented secondary models: **85X** with the 890 Jump, **Skylark** with the Constellation Mk V Centaurus, and **C8X Pisces Expedition + Ursa** with the Carrack Expedition C8X variant. Exact current parent/manufacturer matches trigger a local, dated rule table; no extra web request occurs. [Rules and official sources](docs/INCLUDED_VEHICLES.md).
+Version 0.2.1 exports JSON format **2**, including four officially documented secondary models: **85X** with the 890 Jump, **Skylark** with the Constellation Mk V Centaurus, and **C8X Pisces Expedition + Ursa** with the Carrack Expedition C8X variant. Exact current parent/manufacturer matches trigger a local, dated rule table; no extra web request occurs. [Rules and official sources](docs/INCLUDED_VEHICLES.md).
 
 Each instance identifies `source: "pledge"` or `source: "included"`. Included instances list their parents in `includedWith`. Multiple parents do not multiply a secondary allocation under the current RSI rule; independently pledged copies remain separate. Ambiguous same-pledge overlaps are reported rather than silently counted twice. Temporary replacement and Arena Commander loaners are never inferred. The rule table covers only these parents and always declares that limited coverage.
 
@@ -70,6 +70,8 @@ npm test
 For browser checks, run `npm ci`, `npx playwright install chromium`, then `npm run test:browser`. All test responses are synthetic; no connected RSI account is used. Installation by players does not require these steps.
 
 Load the `extension` directory directly after edits and reload the add-on and hangar tab. See [validation](docs/VALIDATION.md) before changing the adapter. Tests use synthetic data and do not prove real RSI behavior.
+
+The [0.2.1 code review](docs/CODE_REVIEW.md) records each loop and timer's bound and cleanup. The extension schedules no collection while idle; grouping and overlap checks use in-memory indexes rather than repeated full scans.
 
 ## Uninstall
 

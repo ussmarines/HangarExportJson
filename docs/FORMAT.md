@@ -2,16 +2,16 @@
 
 The format is independent of Juliet and every other importer. No compatibility with Juliet has been tested.
 
-| Field | Meaning |
-| --- | --- |
-| `format` | Exactly `HangarExportJson`. |
-| `version` | Integer `2`. Consumers must reject unsupported versions. |
-| `complete` | Always `false` in 0.2.0. Finishing pagination does not establish a fully qualified inventory. |
-| `inclusionRules` | Local rule revision, public source URL and quantity policy. No runtime catalogue fetch. |
-| `fleet` | Groups of directly observed vehicle candidates and supported included craft. |
-| `unresolved` | Entries or items that cannot safely be interpreted. |
-| `errors` | Collection failures, with a page number and fixed error code. |
-| `warnings` | Fixed codes describing semantic limitations. |
+| Field            | Meaning                                                                                       |
+| ---------------- | --------------------------------------------------------------------------------------------- |
+| `format`         | Exactly `HangarExportJson`.                                                                   |
+| `version`        | Integer `2`. Consumers must reject unsupported versions.                                      |
+| `complete`       | Always `false` in 0.2.1. Finishing pagination does not establish a fully qualified inventory. |
+| `inclusionRules` | Local rule revision, public source URL and quantity policy. No runtime catalogue fetch.       |
+| `fleet`          | Groups of directly observed vehicle candidates and supported included craft.                  |
+| `unresolved`     | Entries or items that cannot safely be interpreted.                                           |
+| `errors`         | Collection failures, with a page number and fixed error code.                                 |
+| `warnings`       | Fixed codes describing semantic limitations.                                                  |
 
 Each fleet group has `model`, `manufacturer`, `category`, `quantity` and `instances`. Direct model and manufacturer values preserve the exact trimmed RSI labels, including variants and manufacturer abbreviations. Generated children use the four labels documented in [INCLUDED_VEHICLES.md](INCLUDED_VEHICLES.md). Different variants are never normalized to a base model. Values over 200 characters or ambiguous duplicate fields are not guessed.
 
@@ -50,8 +50,8 @@ The names below are fictitious and illustrate the schema, not additional bundled
       "category": "ship",
       "quantity": 2,
       "instances": [
-        {"customName": "Dawn", "source": "pledge", "includedWith": null},
-        {"customName": null, "source": "pledge", "includedWith": null}
+        { "customName": "Dawn", "source": "pledge", "includedWith": null },
+        { "customName": null, "source": "pledge", "includedWith": null }
       ]
     },
     {
@@ -59,19 +59,26 @@ The names below are fictitious and illustrate the schema, not additional bundled
       "manufacturer": "Example Motors",
       "category": "vehicle",
       "quantity": 1,
-      "instances": [{
-        "customName": null,
-        "source": "included",
-        "includedWith": [
-          {"model": "Synthetic Scout XL", "customName": "Dawn"},
-          {"model": "Synthetic Scout XL", "customName": null}
-        ]
-      }]
+      "instances": [
+        {
+          "customName": null,
+          "source": "included",
+          "includedWith": [
+            { "model": "Synthetic Scout XL", "customName": "Dawn" },
+            { "model": "Synthetic Scout XL", "customName": null }
+          ]
+        }
+      ]
     }
   ],
-  "unresolved": [{"page": 2, "entry": 1, "reason": "ANCILLARY_CONTENT_UNVERIFIED"}],
+  "unresolved": [{ "page": 2, "entry": 1, "reason": "ANCILLARY_CONTENT_UNVERIFIED" }],
   "errors": [],
-  "warnings": ["COMPLETENESS_NOT_QUALIFIED", "UNTYPED_CONTENT_NOT_INFERRED", "INCLUDED_VESSEL_RULES_PARTIAL", "TEMPORARY_LOANERS_NOT_INCLUDED"]
+  "warnings": [
+    "COMPLETENESS_NOT_QUALIFIED",
+    "UNTYPED_CONTENT_NOT_INFERRED",
+    "INCLUDED_VESSEL_RULES_PARTIAL",
+    "TEMPORARY_LOANERS_NOT_INCLUDED"
+  ]
 }
 ```
 

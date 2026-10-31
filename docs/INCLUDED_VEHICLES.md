@@ -6,12 +6,12 @@ The extension bundles a deliberately small, reviewed rule table. It never downlo
 
 Checked on **2026-10-31**, against RSI's [Included Vessels — Snub Fighters and Rovers](https://support.robertsspaceindustries.com/hc/en-us/articles/4408770370455-Included-Vessels-Snub-Fighters-and-Rovers), updated on October 20, 2026:
 
-| Observed parent model | Added included model | Manufacturer | Category |
-| --- | --- | --- | --- |
-| 890 JUMP | 85X | Origin Jumpworks | ship |
-| Constellation Mk V Centaurus | Skylark | Roberts Space Industries | ship |
-| Carrack Expedition with Pisces Expedition | C8X Pisces Expedition | Anvil Aerospace | ship |
-| Carrack Expedition with Pisces Expedition | Ursa | Roberts Space Industries | vehicle |
+| Observed parent model                     | Added included model  | Manufacturer             | Category |
+| ----------------------------------------- | --------------------- | ------------------------ | -------- |
+| 890 JUMP                                  | 85X                   | Origin Jumpworks         | ship     |
+| Constellation Mk V Centaurus              | Skylark               | Roberts Space Industries | ship     |
+| Carrack Expedition with Pisces Expedition | C8X Pisces Expedition | Anvil Aerospace          | ship     |
+| Carrack Expedition with Pisces Expedition | Ursa                  | Roberts Space Industries | vehicle  |
 
 The long Carrack label is the included-item model observed in RSI's hangar DOM. It is mapped explicitly to the official table's `Carrack Expedition w/ C8X` variant. The exact `w/ C8X` and `w/C8X` spellings are also supported. A plain Carrack Expedition is **not** treated as this variant. Model and manufacturer must both match; the original parent label is preserved in the export.
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 — 2026-10-31
+
+- Replace repeated fleet-group searches with collision-safe Map lookups.
+- Index same-pledge child labels only for supported parents, avoiding repeated full-entry scans.
+- Remove a redundant pagination-link fallback without changing the RSI contract.
+- Verify the 10,000-item boundary, grouping keys and actual request-timeout recovery.
+- Document production function usage, bounded loops, timer cleanup and idle behavior; keep JSON format 2 unchanged.
+
 ## 0.2.0 — 2026-10-31
 
 - Verify four included craft against RSI's official included-vessels table and bundle narrowly scoped local rules.

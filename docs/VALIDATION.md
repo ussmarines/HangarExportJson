@@ -23,7 +23,7 @@ Environment: Windows (`win32`), Node.js 26.7.0, Playwright 1.64.1, bundled Chrom
 
 The browser suite verified automatic content-script loading, explicit-click collection, two pages, nested pack contents, legitimate identical copies, a distinct variant, a custom name, an explicit ground-vehicle label, an upgraded final-model item, excluded non-vehicles, an ambiguous extra, downloaded JSON and its filename, concurrent-run prevention, cancellation without a download, 429 termination without retry, unknown markup, streamed-response size limits and pagination selection. Remote resource traps in fetched HTML produced no extra requests or execution. Untrusted labels remained text. A screenshot was visually inspected.
 
-Nineteen Node tests cover grouping and names, unknown contents, multiple pages, repeat-page ambiguity, partial errors, cancellation, page/entry limits, output-field privacy and the included-vehicle rules. These are synthetic logic tests and do not qualify RSI behavior.
+Twenty-one Node tests cover grouping and names, unknown contents, multiple pages, repeat-page ambiguity, partial errors, cancellation, page/entry limits, output-field privacy and the included-vehicle rules. They include 10,000 distinct items and collision-safe tuple grouping. These are synthetic logic tests and do not qualify RSI behavior.
 
 ### Included-vehicle verification (0.2.0)
 
@@ -34,6 +34,8 @@ The actual Chromium extension was also exercised with a second synthetic two-pag
 A private offline comparison using only model/manufacturer projections from user-supplied export files produced the same model quantities after the documented spelling equivalences. Those input files and results remain outside tracked project files. This checks the expansion logic against an external export, not the extension's real authenticated download or a live ASOP inventory.
 
 ## Reproduce
+
+The [0.2.1 source review](CODE_REVIEW.md) describes the removal of repeated full scans and a redundant link fallback. The affected browser suite additionally exercises a genuinely stalled synthetic response until the production 15-second request timeout, then verifies the controls recover. No real account is used for this check.
 
 Installation needs no development tools. To run checks from the repository root:
 
