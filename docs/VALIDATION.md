@@ -35,6 +35,8 @@ A private offline comparison using only model/manufacturer projections from user
 
 ## Reproduce
 
+Release 0.2.2 preserves the runtime and JSON format validated above. Packaging checks compare the archived files with the tagged commit, confirm the manifest's version-only change, verify the included synthetic contract and generate a SHA-256 checksum. Unchanged runtime and browser evidence is reused; the two additional contract tests have their own successful evidence. The original release assets remain intact.
+
 Two additional producer contract tests verify the shared [Juliet fixture](../contracts/juliet-v2.synthetic.json) against real `result()` output and check five expanded instances, distinct callsigns, a terrestrial vehicle, shared inclusion provenance and retained diagnostics. They can be run independently with `node --test tests/contract.test.cjs`. The existing 21 unchanged Node checks and Chromium evidence remain applicable: no production or browser-test code changed for this contract. No Juliet consumer integration test has passed or been claimed here; the inspected legacy parser rejects the canonical object until its native adapter is implemented.
 
 The [0.2.1 source review](CODE_REVIEW.md) describes the removal of repeated full scans and a redundant link fallback. The affected browser suite additionally exercises a genuinely stalled synthetic response until the production 15-second request timeout, then verifies the controls recover. No real account is used for this check.
@@ -59,6 +61,6 @@ Re-run affected checks after adapter, UI, manifest or transport changes. Reuse u
 - Test the unpacked extension in actual Chrome and Opera. Chromium execution is evidence for the shared engine, not certification for every branded browser.
 - Qualify multi-ship packs, repeated identical pages, applied and unapplied upgrades, explicit quantities, long/ambiguous names and ground vehicles across additional independent layouts.
 - Define stronger completeness evidence before changing `complete` to `true`. Untyped extras remain unresolved; the small included-vehicle table is explicitly partial and requires source review when RSI changes it.
-- A repository owner must select a license before offering explicit reuse rights. The GitHub v0.2.1 prerelease distributes the committed source as a ZIP with a SHA-256 checksum. It does not provide a signed XPI, store submission or completed real-account qualification; browser settings have not been changed.
+- A repository owner must select a license before offering explicit reuse rights. The GitHub v0.2.2 prerelease distributes committed source, the consumer contract and its synthetic fixture as a ZIP with a SHA-256 checksum. It does not provide a signed XPI, store submission or completed real-account qualification; browser settings have not been changed.
 
 No compatibility with Juliet or other fleet importers has been tested.

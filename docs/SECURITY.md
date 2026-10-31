@@ -30,6 +30,8 @@ Version 0.2.0 adds only a local inclusion-rule table and JSON provenance. It doe
 
 The [code review](CODE_REVIEW.md) lists all loop bounds, timer cleanup and idle behavior. Version 0.2.1 changes local grouping/indexing only; its format, supported included models and permission boundary remain unchanged.
 
+Version 0.2.2 packages the [Juliet contract](JULIET_CONTRACT.md) and a synthetic fixture. It introduces no integration bridge, network request, new permission or account operation. Consumer-side acceptance of incomplete inventory is a separate validation requirement, not a hidden exporter option.
+
 See [VALIDATION.md](VALIDATION.md) for the exact distinction between real DOM inspection and synthetic extension execution. Tests intercept all browser network requests and reject any non-GET or off-path request. They include remote-image/script traps in fetched HTML and verify no request or execution follows.
 
 Report problems through the repository's GitHub issues using a synthetic reproduction. Do not attach account exports, screenshots containing private account details, request headers, cookies, tokens or full RSI HTML. No security-support SLA is offered.

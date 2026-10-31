@@ -4,7 +4,7 @@
 
 Keep the existing canonical export and add a small **consumer-side adapter in Juliet**. No second export mode, legacy-array conversion, invented model code, network call or extension UI is required. The legacy array has no place for completeness, collection errors, unresolved entries or inclusion provenance. A separate sidecar would be easy to omit, so it is not the recommended contract.
 
-The Juliet parser inspected in read-only mode currently accepts only two legacy root arrays. It does **not** accept this canonical object yet. The consumer adapter and its acknowledgment UI must be implemented and tested in the Juliet repository before compatibility is announced. No Juliet source was modified here. Existing v0.2.1 downloads already contain the required canonical fields; no replacement release asset is needed.
+The Juliet parser inspected in read-only mode at contract preparation accepted only two legacy root arrays and rejected the canonical object. This is a recorded snapshot, not live status of work in another repository. The consumer adapter and its acknowledgment UI must be validated in Juliet before compatibility is announced. No Juliet source was modified here. Existing v0.2.1 downloads already contain the required canonical fields; v0.2.2 packages this contract and fixture alongside the unchanged exporter behavior. Existing release assets are not replaced.
 
 A read-only execution of that parser against the shared fixture returned `HANGAR_IMPORT_ENTRY_COUNT_INVALID`. This records the legacy parser's array gate, not a defect in the producer fixture.
 

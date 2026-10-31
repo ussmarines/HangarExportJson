@@ -1,9 +1,10 @@
 # Changelog
 
-## Unreleased
+## 0.2.2 — 2026-10-31
 
 - Add a native format-2 Juliet consumer contract and a shared synthetic fixture covering multiplicity, custom names, ground vehicles, inclusion provenance and incomplete-result diagnostics.
-- Add producer contract tests without changing the extension runtime, JSON format or existing release assets. Consumer integration remains pending in Juliet.
+- Add producer contract tests without changing runtime behavior or JSON format; keep existing release assets intact. Consumer integration is not verified by this repository.
+- Bundle the consumer contract and synthetic fixture in the new prerelease archive, with updated English/French download links and a SHA-256 checksum.
 
 ## 0.2.1 — 2026-10-31
 
