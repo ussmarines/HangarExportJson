@@ -1,5 +1,7 @@
 # HangarExportJson
 
+**[Download the add-on](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.2) · [Support this project on PayPal](https://www.paypal.com/paypalme/ussmarinesdot) · [Français](README.fr.md)**
+
 Export RSI hangar vehicle candidates to a local JSON file. A small Manifest V3 extension with no runtime dependencies, targeting Firefox, Chrome and Opera.
 
 **Status: experimental, with explicit incomplete-result reporting.** Current RSI markup was inspected on an authorized real hangar, and the installed extension passed synthetic Chromium browser checks. A real-account extension export and actual Firefox/Opera runs remain unverified. Every export is marked `complete: false`; do not treat it as an authoritative inventory.
@@ -76,6 +78,10 @@ For browser checks, run `npm ci`, `npx playwright install chromium`, then `npm r
 Load the `extension` directory directly after edits and reload the add-on and hangar tab. See [validation](docs/VALIDATION.md) before changing the adapter. Tests use synthetic data and do not prove real RSI behavior.
 
 The [0.2.1 code review](docs/CODE_REVIEW.md) records each loop and timer's bound and cleanup. The extension schedules no collection while idle; grouping and overlap checks use in-memory indexes rather than repeated full scans.
+
+## Support the project
+
+If you find HangarExportJson useful, you can [make an optional donation through PayPal](https://www.paypal.com/paypalme/ussmarinesdot). Donations support the project's development and maintenance. No donation is required to download or use the extension.
 
 ## Uninstall
 
