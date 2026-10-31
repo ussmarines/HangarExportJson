@@ -8,7 +8,9 @@ Extension légère, sans dépendance, pour exporter localement les véhicules ca
 
 ## Installation simple
 
-Sur GitHub, cliquez sur **Code → Download ZIP**, puis décompressez le fichier. Aucun outil de compilation ni installation npm n’est nécessaire. Le dossier à sélectionner est **extension**, à l’intérieur du projet.
+[Téléchargez HangarExportJson 0.2.1](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.1/HangarExportJson-0.2.1.zip), puis décompressez le fichier. La [page de téléchargement](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.1) fournit aussi une empreinte SHA-256. Aucun outil de compilation ni installation npm n’est nécessaire. Dans le dossier extrait `HangarExportJson-0.2.1`, sélectionnez le sous-dossier **extension**.
+
+Cette préversion expérimentale est destinée à une installation manuelle ; ce n’est pas un module signé distribué sur une boutique. Le téléchargement du code courant via **Code → Download ZIP** reste possible.
 
 ### Chrome
 

@@ -7,6 +7,7 @@
 - Remove a redundant pagination-link fallback without changing the RSI contract.
 - Verify the 10,000-item boundary, grouping keys and actual request-timeout recovery.
 - Document production function usage, bounded loops, timer cleanup and idle behavior; keep JSON format 2 unchanged.
+- Provide a manually installable GitHub prerelease ZIP, checksum and direct download links in both README languages.
 
 ## 0.2.0 — 2026-10-31
 

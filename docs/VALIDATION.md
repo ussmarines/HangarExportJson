@@ -57,6 +57,6 @@ Re-run affected checks after adapter, UI, manifest or transport changes. Reuse u
 - Test the unpacked extension in actual Chrome and Opera. Chromium execution is evidence for the shared engine, not certification for every branded browser.
 - Qualify multi-ship packs, repeated identical pages, applied and unapplied upgrades, explicit quantities, long/ambiguous names and ground vehicles across additional independent layouts.
 - Define stronger completeness evidence before changing `complete` to `true`. Untyped extras remain unresolved; the small included-vehicle table is explicitly partial and requires source review when RSI changes it.
-- A repository owner must select a license before offering explicit reuse rights. Store metadata, signing, store submission, release publication and browser settings have not been changed.
+- A repository owner must select a license before offering explicit reuse rights. The GitHub v0.2.1 prerelease distributes the committed source as a ZIP with a SHA-256 checksum. It does not provide a signed XPI, store submission or completed real-account qualification; browser settings have not been changed.
 
 No compatibility with Juliet or other fleet importers has been tested.

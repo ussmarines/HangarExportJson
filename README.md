@@ -8,7 +8,9 @@ Export RSI hangar vehicle candidates to a local JSON file. A small Manifest V3 e
 
 ## Quick installation
 
-Download this repository using GitHub **Code → Download ZIP**, then extract it. No build, npm installation or additional account is required. Select the **extension** folder, not the repository root. Your normal RSI login is needed to read your hangar.
+[Download HangarExportJson 0.2.1](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.1/HangarExportJson-0.2.1.zip), then extract it. The [release page](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.1) also provides a SHA-256 checksum. No build, npm installation or additional account is required. Inside the extracted `HangarExportJson-0.2.1` directory, select the **extension** folder, not the repository root. Your normal RSI login is needed to read your hangar.
+
+The release is an experimental prerelease for manual installation, not a signed store add-on. You can alternatively download the current source with GitHub **Code → Download ZIP**.
 
 ### Chrome
 
