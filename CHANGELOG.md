@@ -1,6 +1,12 @@
 # Changelog
 
-## 0.2.3 — 2026-10-31
+## 0.2.4 — 2026-11-01
+
+- Refresh English/French download links and distinguish current release information from historical validation records.
+- Document public release contents, checksum verification, manual updates, licensing and optional donations in one release guide.
+- Keep runtime behavior, permissions, included-vehicle rules and JSON format 2 unchanged; reuse unaffected validation evidence.
+
+## 0.2.3 — 2026-11-01
 
 - Add the MIT License with copyright credit to ussmarines and explicit free distribution terms in both README languages.
 - Add prominent optional PayPal donation links and GitHub funding configuration.
