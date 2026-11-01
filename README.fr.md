@@ -1,10 +1,10 @@
 # HangarExportJson
 
-**[Télécharger l’extension](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.6) · [Soutenir le projet sur PayPal](https://www.paypal.com/paypalme/ussmarinesdot) · [English](README.md)**
+**[Télécharger l’extension](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.7) · [Soutenir le projet sur PayPal](https://www.paypal.com/paypalme/ussmarinesdot) · [English](README.md)**
 
-Extension légère, sans dépendance, pour exporter localement les véhicules candidats du hangar RSI en JSON. Cibles : Firefox, Chrome et Opera.
+Extension légère, sans dépendance, pour exporter localement les véhicules candidats du hangar RSI en JSON. Navigateurs de bureau ciblés : Firefox, Chrome, Edge, Opera, Opera GX, Brave et Vivaldi. [Compatibilité et preuves](docs/BROWSERS.md).
 
-**Version expérimentale : tous les exports portent `complete: false`.** Le DOM actuel a été inspecté sur un vrai hangar avec autorisation, et l’extension installée a passé les tests Chromium sur données synthétiques. Un export réel avec l’extension installée et les essais Firefox/Opera restent à réaliser. Le résultat ne constitue pas un inventaire garanti.
+**Version expérimentale : tous les exports portent `complete: false`.** Le DOM actuel a été inspecté sur un vrai hangar avec autorisation, et l’extension installée a passé les tests Chromium sur données synthétiques. L’utilisateur a confirmé un export réel sous Firefox. Chrome et Edge ont été testés sur données synthétiques ; Opera, Opera GX, Brave et Vivaldi restent des cibles compatibles non exécutées ici. Le résultat ne constitue pas un inventaire garanti.
 
 [English README](README.md) · [Format JSON](docs/FORMAT.md) · [Confidentialité](docs/SECURITY.md) · [Validation et limites](docs/VALIDATION.md)
 
@@ -12,13 +12,13 @@ Extension légère, sans dépendance, pour exporter localement les véhicules ca
 
 **Erreur « Manifest file is missing or unreadable » :** le dossier sélectionné doit contenir directement `manifest.json`. Avec l’ancienne archive source 0.2.4, ouvrez le dossier `HangarExportJson-0.2.4`, puis sélectionnez **extension**. Cliquez sur **Retry** et choisissez ce sous-dossier.
 
-Pour produire localement une archive directement installable, exécutez `powershell -File scripts/package.ps1` depuis le dépôt. Décompressez `output/installable/HangarExportJson-0.2.6.zip`, puis chargez le dossier extrait lui-même : son manifeste est à la racine. Le ZIP publié utilise cette même structure.
+Pour produire localement une archive directement installable, exécutez `powershell -File scripts/package.ps1` depuis le dépôt. Décompressez `output/installable/HangarExportJson-0.2.7.zip`, puis chargez le dossier extrait lui-même : son manifeste est à la racine. Le ZIP publié utilise cette même structure.
 
-[Téléchargez HangarExportJson 0.2.6](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.6/HangarExportJson-0.2.6.zip), puis décompressez le fichier. La [page de téléchargement](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.6) fournit aussi une empreinte SHA-256. Aucun outil de compilation ni installation npm n’est nécessaire. Sélectionnez le dossier extrait contenant directement **manifest.json**.
+[Téléchargez HangarExportJson 0.2.7](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.7/HangarExportJson-0.2.7.zip), puis décompressez le fichier. La [page de téléchargement](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.7) fournit aussi une empreinte SHA-256. Aucun outil de compilation ni installation npm n’est nécessaire. Sélectionnez le dossier extrait contenant directement **manifest.json**.
 
 Cette préversion expérimentale est destinée à une installation manuelle ; ce n’est pas un module signé distribué sur une boutique. Avec le code source obtenu via **Code → Download ZIP**, sélectionnez plutôt le sous-dossier `extension`.
 
-Le [guide des releases](docs/RELEASES.md) détaille le contenu de l’archive, la vérification SHA-256 et la mise à jour d’une installation existante. La version 0.2.6 simplifie le bilan et reconnaît davantage d’éléments hors flotte.
+Le [guide des releases](docs/RELEASES.md) détaille le contenu de l’archive, la vérification SHA-256 et la mise à jour d’une installation existante. La version 0.2.7 documente la compatibilité multi-navigateur et ajoute les contrôles Chrome/Edge, sans modifier la collecte ni le bilan.
 
 ### Chrome
 
@@ -29,7 +29,7 @@ Le [guide des releases](docs/RELEASES.md) détaille le contenu de l’archive, l
 
 Cette installation reste normalement disponible après redémarrage si les fichiers restent en place. Les restrictions d’un navigateur administré peuvent empêcher ce chargement.
 
-### Opera
+### Opera et Opera GX
 
 1. Ouvrez `opera://extensions`.
 2. Activez le **Mode développeur**.
@@ -45,7 +45,11 @@ Opera partage le code Chromium. Son chargement réel n’a pas encore été test
 3. Sélectionnez `manifest.json` dans le dossier extrait.
 4. Ouvrez ou rechargez [Mon hangar RSI](https://robertsspaceindustries.com/account/pledges). Si nécessaire, accordez l’accès à ce site uniquement.
 
-**Le module disparaît au redémarrage de Firefox.** Une installation persistante sur Firefox standard exige une signature Mozilla, avec publication AMO ou distribution signée privée. Aucun XPI signé n’est fourni actuellement. Ne désactivez pas les protections du navigateur. La version minimale déclarée est Firefox 140 ; son exécution reste à vérifier.
+**Le module disparaît au redémarrage de Firefox.** Une installation persistante sur Firefox standard exige une signature Mozilla, avec publication AMO ou distribution signée privée. Aucun XPI signé n’est fourni actuellement. Ne désactivez pas les protections du navigateur. La version minimale déclarée est Firefox 140 ; l’utilisateur confirme le fonctionnement de son installation, sans précision de version.
+
+### Edge, Brave et Vivaldi
+
+Ouvrez respectivement `edge://extensions`, `brave://extensions` ou `vivaldi://extensions`. Activez le **Mode développeur**, choisissez **Charger l’extension non empaquetée**, puis le dossier extrait contenant `manifest.json`. Rechargez le hangar RSI. Le [tableau de compatibilité](docs/BROWSERS.md) distingue les tests réels des cibles non exécutées. Safari et les navigateurs mobiles ne sont pas fournis ou qualifiés par ce ZIP.
 
 ## Utilisation
 
@@ -65,7 +69,7 @@ Les véhicules terrestres sont inclus lorsqu’un élément de véhicule est typ
 
 ## Véhicules inclus, sans remplaçants temporaires
 
-La version **0.2.6**, au format JSON **2**, utilise une table locale sourcée pour les quatre véhicules secondaires confirmés par RSI : **85X** avec le 890 Jump, **Skylark** avec le Constellation Mk V Centaurus, **C8X Pisces Expedition et Ursa** avec la variante Carrack Expedition équipée du C8X. Seuls les modèles actuels et constructeurs correspondant exactement aux règles déclenchent cet ajout. Aucun catalogue n’est téléchargé. [Règles et sources officielles](docs/INCLUDED_VEHICLES.md).
+La version **0.2.7**, au format JSON **2**, utilise une table locale sourcée pour les quatre véhicules secondaires confirmés par RSI : **85X** avec le 890 Jump, **Skylark** avec le Constellation Mk V Centaurus, **C8X Pisces Expedition et Ursa** avec la variante Carrack Expedition équipée du C8X. Seuls les modèles actuels et constructeurs correspondant exactement aux règles déclenchent cet ajout. Aucun catalogue n’est téléchargé. [Règles et sources officielles](docs/INCLUDED_VEHICLES.md).
 
 Chaque exemplaire indique `source: "pledge"` ou `source: "included"`. Les inclusions gardent leurs parents dans `includedWith`, sans hériter de leur nom personnalisé. Selon la règle RSI actuelle, plusieurs parents ne multiplient pas un même véhicule secondaire. Les exemplaires achetés séparément restent distincts. En cas de recouvrement ambigu dans un même pack, l’extension signale `INCLUSION_OVERLAP` et n’ajoute pas d’exemplaire hypothétique. Les loaners de remplacement et d’Arena Commander ne sont pas ajoutés. La table reste limitée à ces parents, ce que le fichier signale explicitement.
 

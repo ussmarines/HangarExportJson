@@ -1,6 +1,6 @@
 # Downloading and updating releases
 
-Current package: **0.2.6**, experimental prerelease dated **2026-11-01** (Europe/Paris). [Release page](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.6) · [ZIP download](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.6/HangarExportJson-0.2.6.zip).
+Current package: **0.2.7**, experimental prerelease dated **2026-11-01** (Europe/Paris). [Release page](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.7) · [ZIP download](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.7/HangarExportJson-0.2.7.zip).
 
 ## Contents and installation
 
@@ -12,11 +12,11 @@ For updates, extract into a stable directory, remove the previous unpacked insta
 
 ## Packaging and integrity
 
-Run `powershell -File scripts/package.ps1` from the repository. It writes `output/installable/HangarExportJson-0.2.6.zip` and its `.zip.sha256` checksum. Packaging uses an explicit allowlist to exclude local exports, dependencies and browser profiles. Compare the downloaded ZIP hash with the accompanying SHA-256 file. This detects accidental changes; it is not a signing certificate. Source, documentation and synthetic contracts remain available at tag `v0.2.6`. Older assets are not overwritten.
+Run `powershell -File scripts/package.ps1` from the repository. It writes `output/installable/HangarExportJson-0.2.7.zip` and its `.zip.sha256` checksum. Packaging uses an explicit allowlist to exclude local exports, dependencies and browser profiles. Compare the downloaded ZIP hash with the accompanying SHA-256 file. This detects accidental changes; it is not a signing certificate. Source, documentation and synthetic contracts remain available at tag `v0.2.7`. Older assets are not overwritten.
 
 ## Scope and retained limitations
 
-Version 0.2.6 replaces the on-page diagnostic list with the number of vehicle instances written to JSON. Interrupted collections remain clearly marked as partial. Explicit non-fleet types are excluded even in ancillary containers; narrow untyped upgrade and non-fleet labels are recognized. Unknown extras remain unresolved in JSON. Permissions, included-vehicle rules and JSON format 2 are unchanged. The packaged extension is checked in Chromium using synthetic scenarios. A real-account export and Firefox/Opera execution remain unverified. Every export still reports `complete: false`. See [validation](VALIDATION.md) and the [Juliet contract](JULIET_CONTRACT.md).
+Version 0.2.7 adds cross-browser documentation, author/homepage metadata and actual Chrome/Edge extension test channels. Runtime scripts and permissions are unchanged from 0.2.6. The user confirmed real-account Firefox execution; the exact version was not supplied. Opera, Opera GX, Brave and Vivaldi are intended compatible desktop targets not executed here. Safari and mobile installation are not supplied or qualified. See the [browser matrix](BROWSERS.md). Every export still reports `complete: false`. See [validation](VALIDATION.md) and the [Juliet contract](JULIET_CONTRACT.md).
 
 ## Free distribution and optional support
 

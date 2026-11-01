@@ -54,7 +54,7 @@ Browser checks use an isolated profile and synthetic data only. Artifacts under 
 
 Re-run affected checks after adapter, UI, manifest or transport changes. Reuse unchanged successful evidence. Documentation-only edits do not require re-running browser tests.
 
-## Release gaps
+## Historical release gaps (see current browser evidence below)
 
 - Execute the installed extension in an explicitly authorized real RSI browser session and compare its file against the visible inventory, including filtered starting pages and session expiry. Never copy session cookies into an automated profile.
 - Test actual Firefox loading, permissions, cancellation and download behavior. Firefox's signing declaration is present, but no signed XPI is available. Browser-engine DOM tests alone do not prove add-on installation.
@@ -70,3 +70,11 @@ No compatibility with Juliet or other fleet importers has been tested.
 The user supplied a real Firefox-generated JSON with 40 vehicle instances and no declared collection errors. This is user-reported Firefox execution evidence, not an independently observed complete inventory or browser qualification. No private export or pasted account data is committed.
 
 Synthetic checks cover compact instance counts, hidden on-page diagnostics, empty/interrupted summaries, typed ancillary non-fleet exclusions, and narrow untyped labels. Unknown ancillary content stays unresolved in the JSON. Labels alone never add a vehicle. Downloads are requested; successful disk storage cannot be inferred by the extension.
+
+## 0.2.7 desktop browser compatibility
+
+On 2026-11-01, the user explicitly confirmed that Firefox works. Keep this as user-confirmed real-account execution with exact browser/add-on versions unspecified. It is not proof of complete inventory or Firefox 140 minimum-version qualification. Runtime core.js and content.js are unchanged from 0.2.6.
+
+Actual Chrome 156.0.8078.74 and Edge 156.0.4314.58 on Windows each passed all 24 synthetic extension scenarios. Tests used fresh isolated automation profiles and CDP installation of the real unpacked extension, not script injection in place of installation. Initial harness attempts had disabled extensions by default; the final harness explicitly permits extensions only in its owned test process. The successful runs include content-script injection, JSON downloads, summary counts, cancellation, timeouts and rate limits. Existing 24 Node tests and Chromium 0.2.6 evidence remain valid for unchanged runtime logic.
+
+See [BROWSERS.md](BROWSERS.md) for installation, version evidence, unexecuted Opera/Opera GX/Brave/Vivaldi targets and Safari/mobile limits. This supersedes the historical Firefox/Chrome/Edge execution gaps above, without claiming an independently checked live Firefox account or branded-browser live RSI exports. No signing protections or user browser settings were changed.

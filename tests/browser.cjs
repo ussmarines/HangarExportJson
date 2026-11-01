@@ -6,15 +6,37 @@ const path = require('node:path');
 const { item, row, page: htmlPage } = require('./fixtures.cjs');
 const api = require('../extension/core.js');
 (async () => {
-  const output = path.resolve('output/playwright');
+  const channel = process.env.HANGAR_BROWSER_CHANNEL || 'chromium';
+  if (!['chromium', 'chrome', 'msedge'].includes(channel)) throw new Error('Unsupported test channel');
+  const output = path.resolve(channel === 'chromium' ? 'output/playwright' : `output/playwright-${channel}`);
   await fs.mkdir(output, { recursive: true });
   const extension = path.resolve(process.env.HANGAR_EXTENSION_PATH || 'extension');
-  const context = await chromium.launchPersistentContext(path.join(output, 'synthetic-profile'), {
-    channel: 'chromium',
-    headless: true,
-    acceptDownloads: true,
-    args: [`--disable-extensions-except=${extension}`, `--load-extension=${extension}`],
-  });
+  let browser;
+  let context;
+  if (channel === 'chromium') {
+    context = await chromium.launchPersistentContext(path.join(output, 'synthetic-profile'), {
+      channel,
+      headless: true,
+      acceptDownloads: true,
+      args: [`--disable-extensions-except=${extension}`, `--load-extension=${extension}`],
+    });
+  } else {
+    // CDP loading is restricted to this fresh automation browser, never a user profile.
+    context = await chromium.launchPersistentContext(path.join(output, 'synthetic-profile'), {
+      channel, headless: true, acceptDownloads: true,
+      ignoreDefaultArgs: ['--disable-extensions'],
+      args: ['--enable-unsafe-extension-debugging'],
+    });
+    browser = context.browser();
+    try {
+      const cdp = await browser.newBrowserCDPSession();
+      const installed = await cdp.send('Extensions.loadUnpacked', { path: extension });
+      assert.ok(installed.id, 'the branded browser must accept the actual unpacked extension');
+    } catch (error) {
+      await browser.close();
+      throw error;
+    }
+  }
   const requests = [],
     unexpected = [],
     browserErrors = [];
@@ -304,6 +326,7 @@ const api = require('../extension/core.js');
       JSON.stringify(
         {
           browser: context.browser().version(),
+          channel,
           platform: process.platform,
           extensionLoaded: true,
           synthetic: true,
@@ -334,8 +357,8 @@ const api = require('../extension/core.js');
             'untrusted labels',
           ],
           screenshots: [
-            'output/playwright/synthetic-export.png',
-            'output/playwright/synthetic-inclusions.png',
+            path.join(output, 'synthetic-export.png'),
+            path.join(output, 'synthetic-inclusions.png'),
           ],
         },
         null,
@@ -344,6 +367,7 @@ const api = require('../extension/core.js');
     );
   } finally {
     await context.close();
+    await browser?.close();
   }
 })().catch((error) => {
   console.error(error);

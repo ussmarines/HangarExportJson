@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.7 — 2026-11-01
+
+- Document a shared desktop WebExtension package for Firefox and Chromium browsers, with installation steps for Chrome, Edge, Opera, Opera GX, Brave and Vivaldi.
+- Record user-confirmed Firefox export and add actual Chrome/Edge extension execution to the synthetic browser suite, using isolated automation profiles.
+- Add author/homepage manifest metadata. Collector, UI, permissions and JSON format are unchanged from 0.2.6; distinguish unexecuted branded targets, Firefox signing and unsupported Safari/mobile distribution.
+
 ## 0.2.6 — 2026-11-01
 
 - Replace the on-page unresolved-item list with the total number of vehicle instances exported to JSON; keep cancellation, empty and interrupted outcomes explicit.

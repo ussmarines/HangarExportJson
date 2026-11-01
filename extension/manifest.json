@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "HangarExportJson",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Export RSI hangar vehicle candidates locally, with explicit uncertainty reporting.",
   "content_scripts": [
     {
@@ -28,5 +28,7 @@
         ]
       }
     }
-  }
+  },
+  "author": "ussmarines",
+  "homepage_url": "https://github.com/ussmarines/HangarExportJson"
 }

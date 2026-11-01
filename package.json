@@ -1,6 +1,6 @@
 {
   "name": "hangarexportjson",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "private": true,
   "description": "Local-only RSI fleet export",
   "scripts": {
