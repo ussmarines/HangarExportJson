@@ -21,10 +21,8 @@
   cancel.hidden = true;
   const status = document.createElement('p');
   status.setAttribute('role', 'status');
-  status.textContent = 'Ready — exports include an explicit completeness report.';
-  const details = document.createElement('pre');
-  details.style.whiteSpace = 'pre-wrap';
-  panel.append(button, cancel, status, details);
+  status.textContent = 'Ready to export your vehicles as JSON.';
+  panel.append(button, cancel, status);
   shadow.append(style, panel);
   document.body.append(host);
   let controller;
@@ -35,7 +33,6 @@
     const { signal } = controller;
     button.disabled = true;
     cancel.hidden = false;
-    details.textContent = '';
     let totalBytes = 0;
     const start = Date.now();
     const overallTimer = setTimeout(() => controller?.abort('TIME_LIMIT'), api.LIMITS.duration);
@@ -123,16 +120,13 @@
       link.download = `hangar-export-${stamp}.json`;
       link.click();
       setTimeout(() => URL.revokeObjectURL(url), 30000);
+      const count = output.fleet.reduce((sum, group) => sum + group.quantity, 0);
+      const summary = `${count} vehicle${count === 1 ? '' : 's'} exported to JSON.`;
       status.textContent = output.errors.length
-        ? 'Collection error — partial report download requested. Review errors below.'
-        : output.fleet.length === 0
-          ? 'No resolved vehicles — incomplete report download requested. This does not prove an empty hangar.'
-          : 'Export finished — incomplete report download requested. Review warnings and unresolved entries.';
-      details.textContent = JSON.stringify(
-        { unresolved: output.unresolved, errors: output.errors, warnings: output.warnings },
-        null,
-        2,
-      );
+        ? `${summary} Collection interrupted — partial export. Download requested.`
+        : count === 0
+          ? '0 vehicles exported to JSON. No vehicles could be confirmed. Download requested.'
+          : `${summary} Download requested.`;
     } catch (error) {
       status.textContent = signal.aborted
         ? signal.reason === 'TIME_LIMIT'

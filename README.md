@@ -1,6 +1,6 @@
 # HangarExportJson
 
-**[Download the add-on](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.5) · [Support this project on PayPal](https://www.paypal.com/paypalme/ussmarinesdot) · [Français](README.fr.md)**
+**[Download the add-on](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.6) · [Support this project on PayPal](https://www.paypal.com/paypalme/ussmarinesdot) · [Français](README.fr.md)**
 
 Export RSI hangar vehicle candidates to a local JSON file. A small Manifest V3 extension with no runtime dependencies, targeting Firefox, Chrome and Opera.
 
@@ -12,13 +12,13 @@ Export RSI hangar vehicle candidates to a local JSON file. A small Manifest V3 e
 
 **“Manifest file is missing or unreadable”:** the selected directory must contain `manifest.json` directly. With the old 0.2.4 source archive, open `HangarExportJson-0.2.4` and select its **extension** subfolder. Click **Retry** and choose that subfolder.
 
-To build a directly loadable archive locally, run `powershell -File scripts/package.ps1` from this repository. Extract `output/installable/HangarExportJson-0.2.5.zip` and load the extracted directory itself: its manifest is at the root. The published ZIP uses the same layout.
+To build a directly loadable archive locally, run `powershell -File scripts/package.ps1` from this repository. Extract `output/installable/HangarExportJson-0.2.6.zip` and load the extracted directory itself: its manifest is at the root. The published ZIP uses the same layout.
 
-[Download HangarExportJson 0.2.5](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.5/HangarExportJson-0.2.5.zip), then extract it. The [release page](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.5) also provides a SHA-256 checksum. No build, npm installation or additional account is required. Select the extracted folder containing **manifest.json** directly. Your normal RSI login is needed to read your hangar.
+[Download HangarExportJson 0.2.6](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.6/HangarExportJson-0.2.6.zip), then extract it. The [release page](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.6) also provides a SHA-256 checksum. No build, npm installation or additional account is required. Select the extracted folder containing **manifest.json** directly. Your normal RSI login is needed to read your hangar.
 
 The release is an experimental prerelease for manual installation, not a signed store add-on. For GitHub **Code → Download ZIP** source downloads, select the `extension` subfolder instead.
 
-See the [release guide](docs/RELEASES.md) for archive contents, checksum verification and updating an existing installation. Version 0.2.5 fixes the installation archive layout; runtime scripts are unchanged.
+See the [release guide](docs/RELEASES.md) for archive contents, checksum verification and updating an existing installation. Version 0.2.6 simplifies the export summary and recognizes additional non-fleet items.
 
 ### Chrome
 
@@ -51,7 +51,7 @@ Opera uses the shared Chromium manifest and code. Actual Opera loading has not y
 
 Sign in to RSI normally. In My Hangar, select **Export my fleet as JSON**. Collection starts only on this click, reads pages sequentially and requests a download named `hangar-export-YYYY-MM-DD-HH-mm-ss.json` (UTC). Keep the tab open. Select **Cancel** to stop without downloading. Browser download policies may require allowing the download.
 
-Review `warnings`, `unresolved` and `errors` in the file and on screen. A download request is not confirmation that the browser saved the file. No dashboard or configuration is needed.
+The export summary shows the number of vehicle instances written to JSON, without displaying unresolved-item lists. Interrupted collection is marked as partial. Diagnostic arrays remain in the JSON. Explicit non-fleet types and narrowly recognized untyped upgrade/non-fleet labels are excluded; unknown items remain unresolved. Review `warnings`, `unresolved` and `errors` in the file when investigating an export. A download request is not confirmation that the browser saved the file. No dashboard or configuration is needed.
 
 The collector starts from page 1 without the current page's filters and uses the observed `/en/account/pledges` path. It follows next-page links and inspects nested pack contents. Unrecognized pages, login redirects, HTTP failures, identical page contents and limits stop collection with an explicit partial report. An empty page is reported as ambiguous, never as a proven empty account.
 
@@ -65,7 +65,7 @@ Direct ship and ground-vehicle candidates require supported item labels. Variant
 
 ## Included vehicles, without temporary loaners
 
-Version 0.2.5 exports JSON format **2**, including four officially documented secondary models: **85X** with the 890 Jump, **Skylark** with the Constellation Mk V Centaurus, and **C8X Pisces Expedition + Ursa** with the Carrack Expedition C8X variant. Exact current parent/manufacturer matches trigger a local, dated rule table; no extra web request occurs. [Rules and official sources](docs/INCLUDED_VEHICLES.md).
+Version 0.2.6 exports JSON format **2**, including four officially documented secondary models: **85X** with the 890 Jump, **Skylark** with the Constellation Mk V Centaurus, and **C8X Pisces Expedition + Ursa** with the Carrack Expedition C8X variant. Exact current parent/manufacturer matches trigger a local, dated rule table; no extra web request occurs. [Rules and official sources](docs/INCLUDED_VEHICLES.md).
 
 Each instance identifies `source: "pledge"` or `source: "included"`. Included instances list their parents in `includedWith`. Multiple parents do not multiply a secondary allocation under the current RSI rule; independently pledged copies remain separate. Ambiguous same-pledge overlaps are reported rather than silently counted twice. Temporary replacement and Arena Commander loaners are never inferred. The rule table covers only these parents and always declares that limited coverage.
 
@@ -102,3 +102,4 @@ Installation and extension guidance checked on 2026-10-31: [Chrome unpacked inst
 Created and maintained by **[ussmarines](https://github.com/ussmarines)**. HangarExportJson is distributed free of charge under the [MIT License](LICENSE). You may use, modify and redistribute it, including commercially, provided you retain the copyright and license notice in copies or substantial portions. Donations are entirely optional.
 
 This is an independent community project, not affiliated with Cloud Imperium Games. The project license does not grant rights to RSI trademarks or third-party game content.
+

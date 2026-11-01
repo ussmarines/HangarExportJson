@@ -171,17 +171,20 @@
         const where = { page: entry.page, entry: entry.entry };
         if (item.customNameUnresolved)
           unresolved.push({ ...where, reason: 'AMBIGUOUS_CUSTOM_NAME' });
+        // Explicit non-vehicle types take precedence over ancillary layout.
+        if (/^(paint|skin|equipment|fps equipment|upgrade|insurance|decoration|hangar decoration|weapon|component|credits)$/i.test(item.kind))
+          continue;
+        // Narrow fallback for untyped items observed in exports. Never override
+        // a vehicle type or guess from a vehicle name/upgrade destination.
+        if (!item.kind && (
+          /^Upgrade - .+ To .+$/i.test(item.model) ||
+          /^(Star Citizen Digital Download|Top Hat|Monocle|Epoch Society T-Shirt|Aeon Club T-shirt)$/i.test(item.model)
+        ))
+          continue;
         if (item.ancillary) {
           unresolved.push({ ...where, reason: 'ANCILLARY_CONTENT_UNVERIFIED' });
           continue;
         }
-        // Exact labels only. No inference from pledge names, upgrade targets or marketing text.
-        if (
-          /^(paint|skin|equipment|fps equipment|upgrade|insurance|decoration|hangar decoration|weapon|component|credits)$/i.test(
-            item.kind,
-          )
-        )
-          continue;
         if (
           !/^(ship|vehicle|ground vehicle)$/i.test(item.kind) ||
           !item.model ||

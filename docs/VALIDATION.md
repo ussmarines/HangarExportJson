@@ -64,3 +64,9 @@ Re-run affected checks after adapter, UI, manifest or transport changes. Reuse u
 - The project is distributed free of charge under the MIT License with the ussmarines copyright notice retained. The GitHub v0.2.4 prerelease distributes the committed source, license, consumer contract and synthetic fixture as a ZIP with a SHA-256 checksum. It does not provide a signed XPI, store submission or completed real-account qualification; browser settings have not been changed.
 
 No compatibility with Juliet or other fleet importers has been tested.
+
+## 0.2.6 summary and non-fleet recognition
+
+The user supplied a real Firefox-generated JSON with 40 vehicle instances and no declared collection errors. This is user-reported Firefox execution evidence, not an independently observed complete inventory or browser qualification. No private export or pasted account data is committed.
+
+Synthetic checks cover compact instance counts, hidden on-page diagnostics, empty/interrupted summaries, typed ancillary non-fleet exclusions, and narrow untyped labels. Unknown ancillary content stays unresolved in the JSON. Labels alone never add a vehicle. Downloads are requested; successful disk storage cannot be inferred by the extension.

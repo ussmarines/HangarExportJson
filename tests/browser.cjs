@@ -32,6 +32,9 @@ const api = require('../extension/core.js');
           item({ kind: 'Skin' }),
           item({ kind: 'FPS Equipment' }),
           item({ kind: 'Component' }),
+          item({ model: 'Upgrade - Synthetic A To Synthetic B', kind: '', manufacturer: '' }),
+          item({ model: 'Star Citizen Digital Download', kind: '', manufacturer: '', ancillary: true }),
+          item({ model: 'Synthetic paint', kind: 'Paint', ancillary: true }),
         ]),
       ],
       2,
@@ -111,6 +114,8 @@ const api = require('../extension/core.js');
     if (!collection)
       return route.fulfill({ contentType: 'text/html', body: htmlPage(1, [row([item()])]) });
     if (scenario === 'cancel' || scenario === 'timeout') return; // pending until cancellation or the real request timeout
+    if (scenario === 'empty')
+      return route.fulfill({ contentType: 'text/html', body: htmlPage(1, [row([item({ kind: 'Paint' })])]) });
     if (scenario === 'http')
       return route.fulfill({ status: 429, contentType: 'text/html', body: 'Rate limited' });
     if (scenario === 'limit')
@@ -146,6 +151,10 @@ const api = require('../extension/core.js');
     assert.equal(first.fleet.length, 4);
     assert.equal(first.unresolved.length, 1);
     assert.equal(first.complete, false);
+    await tab.getByRole('status').filter({ hasText: '5 vehicles exported to JSON. Download requested.' }).waitFor();
+    assert.equal(await tab.locator('#hangar-export-json pre').count(), 0);
+    assert.ok(!(await tab.locator('#hangar-export-json').innerText()).includes('ANCILLARY_CONTENT_UNVERIFIED'));
+
     assert.ok(first.fleet.some((v) => v.model === 'Final upgraded model'));
     assert.ok(!JSON.stringify(first).includes('Original base-model'));
     assert.deepEqual(
@@ -154,6 +163,9 @@ const api = require('../extension/core.js');
     );
     await tab.screenshot({ path: path.join(output, 'synthetic-export.png'), fullPage: true });
     await fs.writeFile(path.join(output, 'synthetic-export.json'), JSON.stringify(first, null, 2));
+    await tab.setViewportSize({ width: 360, height: 640 });
+    await tab.screenshot({ path: path.join(output, 'synthetic-summary-mobile.png'), fullPage: true });
+    await tab.setViewportSize({ width: 1280, height: 720 });
     assert.deepEqual(unexpected, [], 'fetched HTML must not load images or scripts');
     scenario = 'inclusions';
     const expanded = await downloadOutput();
@@ -207,6 +219,11 @@ const api = require('../extension/core.js');
     scenario = 'http';
     const limited = await downloadOutput();
     assert.equal(limited.errors[0].code, 'RATE_LIMITED');
+    await tab.getByRole('status').filter({ hasText: '0 vehicles exported to JSON. Collection interrupted — partial export.' }).waitFor();
+    scenario = 'empty';
+    const emptyFleet = await downloadOutput();
+    assert.equal(emptyFleet.fleet.length, 0);
+    await tab.getByRole('status').filter({ hasText: '0 vehicles exported to JSON. No vehicles could be confirmed.' }).waitFor();
     scenario = 'unknown';
     const unknown = await downloadOutput();
     assert.equal(unknown.errors[0].code, 'UNRECOGNIZED_PAGE');
@@ -298,6 +315,9 @@ const api = require('../extension/core.js');
             'ground vehicle',
             'excluded non-vehicles',
             'downloaded JSON',
+            'compact summary counts instances and hides diagnostics',
+            'empty and interrupted summary states',
+            'untyped non-fleet labels and typed ancillary exclusion',
             'no automatic collection',
             'no fetched resource execution',
             'four verified included vehicles',

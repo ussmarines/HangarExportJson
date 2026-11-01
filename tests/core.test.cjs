@@ -145,3 +145,20 @@ test('group keys distinguish labels containing separator characters', () => {
   assert.equal(r.fleet[0].quantity, 1);
   assert.equal(r.fleet[1].quantity, 1);
 });
+
+
+test('recognizes explicit ancillary non-fleet types and narrow untyped non-fleet labels', () => {
+  const models = ['Upgrade - Synthetic Scout To Synthetic Rover', 'Star Citizen Digital Download',
+    'Top Hat', 'Monocle', 'Epoch Society T-Shirt', 'Aeon Club T-shirt'];
+  const r = api.result([entry([
+    ...models.map(model => ({ model, kind: '', manufacturer: '', ancillary: true })),
+    { model: 'Synthetic paint', kind: 'Paint', ancillary: true },
+    { model: 'Unknown extra', kind: '', ancillary: true },
+    { model: 'Unidentified vehicle', kind: '', manufacturer: '' },
+    ship('Upgrade - Synthetic Scout To Synthetic Rover'),
+  ])], []);
+  assert.equal(r.unresolved.length, 2);
+  assert.equal(r.unresolved[0].reason, 'ANCILLARY_CONTENT_UNVERIFIED');
+  assert.equal(r.unresolved[1].reason, 'UNRECOGNIZED_ITEM');
+  assert.equal(r.fleet.length, 1, 'an explicit vehicle type is not overridden by its title');
+});

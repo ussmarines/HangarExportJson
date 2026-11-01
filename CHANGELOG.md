@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.6 — 2026-11-01
+
+- Replace the on-page unresolved-item list with the total number of vehicle instances exported to JSON; keep cancellation, empty and interrupted outcomes explicit.
+- Exclude explicitly typed non-fleet items before ancillary handling and recognize narrow untyped upgrade/digital-download/clothing labels without inferring vehicle ownership.
+- Preserve JSON diagnostics, incomplete status, inclusion rules and permissions. Add summary and recognition regression coverage.
+
 ## 0.2.5 — 2026-11-01
 
 - Fix manual-installation ZIP layout: manifest.json and runtime scripts are directly at the archive root.

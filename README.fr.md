@@ -1,6 +1,6 @@
 # HangarExportJson
 
-**[Télécharger l’extension](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.5) · [Soutenir le projet sur PayPal](https://www.paypal.com/paypalme/ussmarinesdot) · [English](README.md)**
+**[Télécharger l’extension](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.6) · [Soutenir le projet sur PayPal](https://www.paypal.com/paypalme/ussmarinesdot) · [English](README.md)**
 
 Extension légère, sans dépendance, pour exporter localement les véhicules candidats du hangar RSI en JSON. Cibles : Firefox, Chrome et Opera.
 
@@ -12,13 +12,13 @@ Extension légère, sans dépendance, pour exporter localement les véhicules ca
 
 **Erreur « Manifest file is missing or unreadable » :** le dossier sélectionné doit contenir directement `manifest.json`. Avec l’ancienne archive source 0.2.4, ouvrez le dossier `HangarExportJson-0.2.4`, puis sélectionnez **extension**. Cliquez sur **Retry** et choisissez ce sous-dossier.
 
-Pour produire localement une archive directement installable, exécutez `powershell -File scripts/package.ps1` depuis le dépôt. Décompressez `output/installable/HangarExportJson-0.2.5.zip`, puis chargez le dossier extrait lui-même : son manifeste est à la racine. Le ZIP publié utilise cette même structure.
+Pour produire localement une archive directement installable, exécutez `powershell -File scripts/package.ps1` depuis le dépôt. Décompressez `output/installable/HangarExportJson-0.2.6.zip`, puis chargez le dossier extrait lui-même : son manifeste est à la racine. Le ZIP publié utilise cette même structure.
 
-[Téléchargez HangarExportJson 0.2.5](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.5/HangarExportJson-0.2.5.zip), puis décompressez le fichier. La [page de téléchargement](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.5) fournit aussi une empreinte SHA-256. Aucun outil de compilation ni installation npm n’est nécessaire. Sélectionnez le dossier extrait contenant directement **manifest.json**.
+[Téléchargez HangarExportJson 0.2.6](https://github.com/ussmarines/HangarExportJson/releases/download/v0.2.6/HangarExportJson-0.2.6.zip), puis décompressez le fichier. La [page de téléchargement](https://github.com/ussmarines/HangarExportJson/releases/tag/v0.2.6) fournit aussi une empreinte SHA-256. Aucun outil de compilation ni installation npm n’est nécessaire. Sélectionnez le dossier extrait contenant directement **manifest.json**.
 
 Cette préversion expérimentale est destinée à une installation manuelle ; ce n’est pas un module signé distribué sur une boutique. Avec le code source obtenu via **Code → Download ZIP**, sélectionnez plutôt le sous-dossier `extension`.
 
-Le [guide des releases](docs/RELEASES.md) détaille le contenu de l’archive, la vérification SHA-256 et la mise à jour d’une installation existante. La version 0.2.5 corrige la structure de l’archive d’installation ; les scripts de l’extension restent inchangés.
+Le [guide des releases](docs/RELEASES.md) détaille le contenu de l’archive, la vérification SHA-256 et la mise à jour d’une installation existante. La version 0.2.6 simplifie le bilan et reconnaît davantage d’éléments hors flotte.
 
 ### Chrome
 
@@ -51,7 +51,7 @@ Opera partage le code Chromium. Son chargement réel n’a pas encore été test
 
 Connectez-vous à RSI normalement. Cliquez sur **Export my fleet as JSON** dans votre hangar. La collecte commence uniquement à ce clic, parcourt les pages successivement et demande le téléchargement d’un fichier `hangar-export-YYYY-MM-DD-HH-mm-ss.json` en heure UTC. Gardez cet onglet ouvert. **Cancel** annule sans télécharger.
 
-Lisez les champs `warnings`, `unresolved` et `errors` et les informations affichées. Le navigateur peut demander une autorisation de téléchargement ; l’extension ne peut pas garantir que le fichier a été enregistré. L’interface reste en anglais.
+Le bilan affiche uniquement le nombre d’exemplaires de véhicules exportés et signale une collecte interrompue. La liste des éléments non résolus ne s’affiche plus dans la page. Les champs `warnings`, `unresolved` et `errors` restent disponibles dans le JSON pour le diagnostic. Le navigateur peut demander une autorisation de téléchargement ; l’extension ne peut pas garantir que le fichier a été enregistré. L’interface reste en anglais.
 
 La collecte repart de la première page sans les filtres de l’URL actuelle. Les pages identiques, erreurs réseau, limites ou structures inconnues arrêtent le parcours avec un rapport partiel. Un hangar apparemment vide est signalé comme ambigu, sans inventer une preuve de vacuité.
 
@@ -65,7 +65,7 @@ Les véhicules terrestres sont inclus lorsqu’un élément de véhicule est typ
 
 ## Véhicules inclus, sans remplaçants temporaires
 
-La version **0.2.5**, au format JSON **2**, utilise une table locale sourcée pour les quatre véhicules secondaires confirmés par RSI : **85X** avec le 890 Jump, **Skylark** avec le Constellation Mk V Centaurus, **C8X Pisces Expedition et Ursa** avec la variante Carrack Expedition équipée du C8X. Seuls les modèles actuels et constructeurs correspondant exactement aux règles déclenchent cet ajout. Aucun catalogue n’est téléchargé. [Règles et sources officielles](docs/INCLUDED_VEHICLES.md).
+La version **0.2.6**, au format JSON **2**, utilise une table locale sourcée pour les quatre véhicules secondaires confirmés par RSI : **85X** avec le 890 Jump, **Skylark** avec le Constellation Mk V Centaurus, **C8X Pisces Expedition et Ursa** avec la variante Carrack Expedition équipée du C8X. Seuls les modèles actuels et constructeurs correspondant exactement aux règles déclenchent cet ajout. Aucun catalogue n’est téléchargé. [Règles et sources officielles](docs/INCLUDED_VEHICLES.md).
 
 Chaque exemplaire indique `source: "pledge"` ou `source: "included"`. Les inclusions gardent leurs parents dans `includedWith`, sans hériter de leur nom personnalisé. Selon la règle RSI actuelle, plusieurs parents ne multiplient pas un même véhicule secondaire. Les exemplaires achetés séparément restent distincts. En cas de recouvrement ambigu dans un même pack, l’extension signale `INCLUSION_OVERLAP` et n’ajoute pas d’exemplaire hypothétique. Les loaners de remplacement et d’Arena Commander ne sont pas ajoutés. La table reste limitée à ces parents, ce que le fichier signale explicitement.
 
