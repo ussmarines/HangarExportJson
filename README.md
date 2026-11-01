@@ -102,4 +102,3 @@ Installation and extension guidance checked on 2026-10-31: [Chrome unpacked inst
 Created and maintained by **[ussmarines](https://github.com/ussmarines)**. HangarExportJson is distributed free of charge under the [MIT License](LICENSE). You may use, modify and redistribute it, including commercially, provided you retain the copyright and license notice in copies or substantial portions. Donations are entirely optional.
 
 This is an independent community project, not affiliated with Cloud Imperium Games. The project license does not grant rights to RSI trademarks or third-party game content.
-
