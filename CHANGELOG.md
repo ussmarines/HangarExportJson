@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.5 — 2026-11-01
+
+- Fix manual-installation ZIP layout: manifest.json and runtime scripts are directly at the archive root.
+- Add a reproducible allowlisted packaging script and SHA-256 checksum; clarify source ZIP versus installable ZIP instructions.
+- Validate packaged extension loading and synthetic exports in Chromium; runtime scripts and permissions remain unchanged.
+
 ## 0.2.4 — 2026-11-01
 
 - Refresh English/French download links and distinguish current release information from historical validation records.

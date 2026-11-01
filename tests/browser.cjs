@@ -8,7 +8,7 @@ const api = require('../extension/core.js');
 (async () => {
   const output = path.resolve('output/playwright');
   await fs.mkdir(output, { recursive: true });
-  const extension = path.resolve('extension');
+  const extension = path.resolve(process.env.HANGAR_EXTENSION_PATH || 'extension');
   const context = await chromium.launchPersistentContext(path.join(output, 'synthetic-profile'), {
     channel: 'chromium',
     headless: true,

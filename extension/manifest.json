@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "HangarExportJson",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Export RSI hangar vehicle candidates locally, with explicit uncertainty reporting.",
   "content_scripts": [
     {
